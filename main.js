@@ -3,31 +3,33 @@
 // ===============================
 const galeriaInfo = {
   piscina: [
-    "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1560067174-c5a3a8f37060?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1470472304068-4398a9daab57?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1563492065599-3520f775eeed?q=80&w=1400&auto=format&fit=crop"
+    "img/quincho_disponibles.webp",
+    "img/quincho_disponibles2.webp",
+    "img/quincho_disponibles3.webp",
+    "img/quincho_disponibles4.webp",
+    "img/quincho_disponibles5.png",
   ],
   salon: [
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1400&auto=format&fit=crop&sat=-10",
-    "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1400&auto=format&fit=crop&con=-10",
-    "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop"
+    "img/salon_climatizado1.jpg",
+    "img/salon_climatizado2.jpg",
+    "img/salon_climatizado3.jpg",
+    "img/salon_climatizado4.jpg",
+    "img/salon_climatizado5.jpg"
   ],
   parrilla: [
-    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=1400&auto=format&fit=crop&sat=-10"
+    "img/quincho_parrillero1.jpg",
+    "img/quincho_parrillero2.jpg",
+    "img/quincho_parrillero3.jpg",
+    "img/quincho_parrillero4.jpg",
+    "img/quincho_parrillero5.jpg"
   ],
   cocina: [
-    "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1541544181051-e46601c0f3d2?q=80&w=1400&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6da?q=80&w=1400&auto=format&fit=crop"
-  ]
+    "img/patio_futbol_relax1.jpg",
+    "img/patio_futbol_relax2.jpg",
+    "img/patio_futbol_relax3.jpg",
+    "img/patio_futbol_relax4.jpg",
+    "img/patio_futbol_relax5.jpg"
+  ],
 };
 
 let currentCategory = "";
@@ -91,3 +93,14 @@ if (navToggle && navLinks) {
 // ===============================
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// Mostrar cantidad de fotos en cada card (opcional en si probe y no anduve no si fue por la cache)
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".card").forEach(card => {
+    const cat = card.getAttribute("data-category");
+    const counter = card.querySelector(".image-counter");
+    if (galeriaInfo[cat] && counter) {
+      counter.innerHTML = `<i class="fas fa-camera"></i> Ver ${galeriaInfo[cat].length} fotos`;
+    }
+  });
+});
